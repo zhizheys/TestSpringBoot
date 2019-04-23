@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.memodd.dao.RoleDao">
+
+    <select id="listRoleNames" resultType="String">
+        select c.rolename from user a
+        left join userrole b
+            on a.userid = b.userid
+        left join role c
+            on b.roleid = c.roleid
+        where a.userid==#{userId}
+    </select>
+
+</mapper>

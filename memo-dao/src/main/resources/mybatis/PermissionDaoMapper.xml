@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.memodd.dao.PermissionDao">
+
+    <select id="listPermissionsByUserId" resultType="String">
+        select e.url
+        from user a
+        inner join userrole b
+            on a.userid = b.userid
+        inner join role c
+            on b.roleid = c.roleid
+        inner join rolepermission d
+            on d.roleid = c.roleid
+        inner join permission e
+            on d.permissionid = e.permissionid
+        where a.userid=#{userId}
+        and e.needpermission=1
+    </select>
+
+    <select id="listNeedPermission" resultType="String">
+        select url from permission a
+        where a.needpermission=1
+    </select>
+
+</mapper>
