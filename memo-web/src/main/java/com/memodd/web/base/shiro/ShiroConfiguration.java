@@ -11,7 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import java.util.HashMap;
 import java.util.Map;
 
-@Configuration
+//不使用shiro
+//@Configuration
 public class ShiroConfiguration {
 
     //将自己的验证方式加入容器
@@ -42,6 +43,7 @@ public class ShiroConfiguration {
 
         //不要验证的界面
         map.put("/login/**", "anon");
+        map.put("/getAllUrl", "anon");
 
         //登录
         shiroFilterFactoryBean.setLoginUrl("/login/login");
