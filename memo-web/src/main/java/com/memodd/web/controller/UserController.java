@@ -32,7 +32,9 @@ public class UserController {
 
     @RequestMapping(value = "/getAllUser",method = RequestMethod.GET)
     public List<User> getAllUser(HttpServletRequest request) {
+        System.out.println("api : the get all user");
         List<User> userList = new ArrayList<User>();
+        userList = userService.getAllUser();
         return userList;
     }
 

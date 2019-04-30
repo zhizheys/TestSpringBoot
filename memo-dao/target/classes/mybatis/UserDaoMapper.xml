@@ -20,4 +20,13 @@
         where username=#{userName}
     </select>
 
+    <select id="getAllUser" resultType="com.memodd.entity.User">
+        select
+        userid,
+        username,
+        birthday
+        from user
+        order by userid
+    </select>
+
 </mapper>

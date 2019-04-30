@@ -19,27 +19,35 @@ public class PermissionInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        System.out.println("自定義攔截器");
-
+        Boolean isNeedPermission=true;
+        Boolean isAdmin=false;
         String url = request.getRequestURI();
 
-        if(url.indexOf("/login") >=0){
-            return true;
-        }
-
-        Map<String, String> map = new HashMap<String, String>();
-        Enumeration headerNames = request.getHeaderNames();
-        while (headerNames.hasMoreElements()) {
-            String key = (String) headerNames.nextElement();
-            String value = request.getHeader(key);
-            map.put(key, value);
-        }
-        String tokenValue = map.get(tokenKey);
-
-        if(StringUtils.isBlank(tokenValue)){
-            request.getRequestDispatcher("/login/login").forward(request,response);
-            return false;
-        }
+//        if(url.indexOf("/login") >=0){
+//            return true;
+//        }
+//
+//        if(isNeedPermission){
+//            //................
+//        }
+//
+//        if(isAdmin){
+//            return true;
+//        }
+//
+//        Map<String, String> map = new HashMap<String, String>();
+//        Enumeration headerNames = request.getHeaderNames();
+//        while (headerNames.hasMoreElements()) {
+//            String key = (String) headerNames.nextElement();
+//            String value = request.getHeader(key);
+//            map.put(key, value);
+//        }
+//        String tokenValue = map.get(tokenKey);
+//
+//        if(StringUtils.isBlank(tokenValue)){
+//            request.getRequestDispatcher("/login/login").forward(request,response);
+//            return false;
+//        }
 
         return true;
     }

@@ -10,4 +10,5 @@ import java.util.List;
 public interface UserDao {
     User getUserById(@Param("userId") Integer userId);
     List<User> getUserByName(@Param("userName") String userName);
+    List<User> getAllUser();
 }
